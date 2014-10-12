@@ -2,16 +2,31 @@
 	<head>
 		<title>Brainf*ck Interpreter</title>
 		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-		<script type="text/javascript" src="bf.js"></script>
+		<script type="text/javascript" src="js/bf.js"></script>
 		<link type="text/css" rel="stylesheet" href="css/style.css"/>
 	</head>
 
 	<body>
-		<div class="editor">
+        <div class="top_wrapper">
+            <div class="editor">
+                <textarea id="bf_input">[Write your BF code here]
 
-		</div>
-		<div class="console">
+[We've started one for you; the code below will print out "Hello World!"]
 
+++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>-[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.</textarea>
+
+            </div>
+            <div class="buttons">
+                <input type="button" class="start_button" value="Start"/>
+                <input type="button" class="kill_button" value="Kill" disabled="disabled"/>
+                <input type="button" class="clear_button" value="Clear Console"/>
+            </div>
+        </div>
+        <div class="bottom_wrapper">
+            <div class="output">
+                <p>&gt; Press 'Start' to run your BF program.</p>
+                <p>&gt; <span class="cursor">_</span></p>
+            </div>
 		</div>
 	</body>
 </html>

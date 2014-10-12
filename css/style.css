@@ -1,0 +1,85 @@
+/* font size */
+
+body {
+    font-size: 1.2em;
+}
+
+/* basic layout */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+div.top_wrapper {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 50%;
+    display: table;
+}
+
+div.editor {
+    display: table-row;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+div.buttons {
+    display: table-row;
+    margin: 0;
+    padding: 0;
+}
+
+div.bottom_wrapper {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 50%;
+}
+
+div.output {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* editor */
+
+div.editor textarea {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    z-index: 1;
+    background-color: #ffffff;
+    border: none;
+    font-size: 1em;
+    font-family: monospace;
+}
+
+/* buttons */
+
+div.buttons input {
+    font-size: 1em;
+    margin: 10px;
+}
+
+/* console */
+
+div.bottom_wrapper {
+    background-color: #151515;
+}
+
+div.output {
+    overflow-y: scroll;
+}
+
+div.output p {
+    margin: 0;
+    padding: 10px 10px 0;
+    color: #d0d0d0;
+    font-family: monospace;
+}
