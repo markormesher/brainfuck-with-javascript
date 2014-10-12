@@ -1,13 +1,14 @@
 var running = false;
 var paused = false;
 
-var commands, cells, currentCommand, currentCell;
+var commands, cells, currentCommand, currentCell, loopMap;
 
 function reset() {
     commands = [];
     cells = [0];
     currentCommand = 0;
     currentCell = 0;
+    loopMap = [];
 }
 reset();
 
@@ -31,7 +32,7 @@ function buildLoopMap(input) {
     return loopMap;
 }
 
-function start() {
+function startBF() {
     // admin work
     if (running) return;
     running = true;
@@ -39,6 +40,7 @@ function start() {
     
     // lock editor
     editor.prop('disabled', true);
+    startButton.blur();
     
     // read code
     var rawCommands = editor.val().split('');
@@ -46,13 +48,21 @@ function start() {
         return c == '+' || c == '-' || c == '<' || c == '>' || c == '.' || c == ',' || c == '[' || c == ']';
     });
     
+    // empty?
     if (commands.length == 0) {
         addToActiveLine('Nothing to execute');
+        finish();
+        return;
     }
     
-    var loopMap = buildLoopMap(commands);
+    // build the loop map
+    loopMap = buildLoopMap(commands);
     
-    // execute the code!
+    // start processing
+    executeCommands();
+}
+
+function executeCommands() {
     while (currentCommand < commands.length && running && !paused) {
         var command = commands[currentCommand];
         
@@ -73,7 +83,8 @@ function start() {
         
         // read from console
         if (command == ',') {
-            // TODO
+            statusMsg.html('Waiting for key input');
+            paused = true;
         }
         
         // move to next cell
@@ -109,6 +120,10 @@ function start() {
         ++currentCommand;
     }
     
+    if (!paused) finish();
+}
+
+function finish() {
     newActiveLine();
     
     // unlock editor
@@ -120,9 +135,29 @@ function start() {
     reset();
 }
 
-function kill() {
+function killBF() {
     // admin work
     if (!running) return;
     running = false;
+    if (activeConsoleLine != '') {
+        newActiveLine();
+    }
+    addToActiveLine('Killed');
     setButtons();
+    finish();
+    reset();
 }
+
+function keyListener(e) {
+    if (paused) {
+        var charCode = e.charCode;
+        if (charCode > 0) {
+            cells[currentCell] = charCode;
+            statusMsg.html('');
+            paused = false;
+            executeCommands();
+        }
+    }
+}
+
+document.addEventListener("keypress", keyListener, false);

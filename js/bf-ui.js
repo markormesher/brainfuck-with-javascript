@@ -1,4 +1,4 @@
-var editor, startButton, killButton, clearButton, console;
+var editor, startButton, killButton, clearButton, console, statusMsg;
 var activeConsoleLine = "";
 
 $(document).ready(function() {
@@ -9,15 +9,16 @@ $(document).ready(function() {
     killButton = $('.kill_button');
     clearButton = $('.clear_button');
     console = $('div.output');
+    statusMsg = $('span.status');
     activeConsoleLine;
     
     // event listeners
     startButton.click(function(e) {
-        start();
+        startBF();
     });
     
     killButton.click(function(e) {
-        kill(); 
+        killBF(); 
     });
     
     clearButton.click(function(e) {

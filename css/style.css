@@ -62,9 +62,13 @@ div.editor textarea {
 
 /* buttons */
 
-div.buttons input {
+div.buttons input, div.buttons span {
     font-size: 1em;
     margin: 10px;
+}
+
+div.buttons span {
+    font-family: sans-serif;
 }
 
 /* console */
