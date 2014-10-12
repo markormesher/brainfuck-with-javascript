@@ -50,14 +50,28 @@ div.output {
 /* editor */
 
 div.editor textarea {
-    width: 100%;
+    width: 85%;
     height: 100%;
     padding: 10px;
-    z-index: 1;
+    float: left;
     background-color: #ffffff;
     border: none;
     font-size: 1em;
     font-family: monospace;
+}
+
+div.editor div.examples {
+    width: 14%;
+    height: 100%;
+    float: right;
+    border-left: 1px solid #999999;
+}
+
+div.editor div.examples p {
+    font-size: 1em;
+    font-family: sans-serif;
+    padding: 0;
+    margin: 6px;
 }
 
 /* buttons */
