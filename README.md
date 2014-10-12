@@ -1,5 +1,5 @@
-BrainfuckWithPython
-===================
+BrainfuckWithJavascript
+=======================
 
 **What is Brainfuck?**
 
